@@ -2,7 +2,7 @@
 
 Ein kleines Hangman-Spiel mit grafischer Oberfläche, geschrieben in Python und Tkinter. Errate das zufällig ausgewählte Wort Buchstabe für Buchstabe, bevor dir die Versuche ausgehen.
 
-![Hangman](screenshots/Screenshot1.png)
+![Hangman](Screenshot1.png)
 
 ## Voraussetzungen
 
