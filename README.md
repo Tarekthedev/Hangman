@@ -1,6 +1,6 @@
 # Hangman
 
-Ein kleines Hangman-Spiel mit grafischer Oberfläche, geschrieben in Python und Tkinter. Errate das zufällig ausgewählte Wort Buchstabe für Buchstabe, bevor dir die Versuche ausgehen.
+Ein Hangman-Spiel mit grafischer Oberfläche, geschrieben in Python und Tkinter. Errate das zufällig ausgewählte Wort Buchstabe für Buchstabe, bevor dir die Versuche ausgehen.
 
 ![Hangman](Screenshot1.png)
 
@@ -13,7 +13,7 @@ Unter Linux kann Tkinter je nach Distribution separat installiert werden. Falls 
 
 ## Starten
 
-Speichere `Hangman.py` und `Woerter.txt` im selben Ordner. Öffne ein Terminal in diesem Ordner und starte das Spiel mit:
+Speichere `Hangman.py` und `Woerter.txt` im selben Ordner. Öffne ein Terminal in diesem Ordner und starte das Spiel mit oder öffne Hangman.py:
 
 ```bash
 python Hangman.py
@@ -43,15 +43,12 @@ Die Datei wird als UTF-8 gelesen. Achte darauf, dass sie neben `Hangman.py` lieg
 
 In `Hangman.py` kannst du die Anzahl der Versuche über `VERSUCHE` ändern. Standardmäßig sind es sechs.
 
-Mit `WORT` lässt sich optional ein festes Wort vorgeben. Bei `WORT = None` wählt das Spiel ein zufälliges Wort aus der Wortdatei(Woerter.txt).
+Mit `WORT` lässt sich optional ein festes Wort vorgeben. Bei `WORT = None` wählt das Spiel ein zufälliges Wort aus der Wortdatei (Woerter.txt).
 
-
-## Projektdateien
-
-- `Hangman.py` – aktuelle Version mit grafischer Tkinter-Oberfläche
-- `Woerter.txt` – Wortliste für die zufällige Auswahl
 
 ## Lizenz
 
 Dieses Projekt steht unter der MIT License.
 Weitere Informationen findest du in der Datei [LICENSE](LICENSE).
+
+© 2026 Tarekthedev
