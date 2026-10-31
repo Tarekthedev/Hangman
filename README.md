@@ -48,10 +48,11 @@ The file is read as UTF-8. Keep it in the same folder as `Hangman.py` and make s
 
 ### Settings
 
-In `Hangman.py`, change `MAX_ATTEPMTS` to set the number of attempts. The default is six.
+In `Hangman.py`, change `MAX_ATTEMPTS` to set the number of attempts. The default is six.
 
-You can optionally set a fixed word with `WORD`. When `WORD = None`, the game selects a random word from `Words.txt`.
+You can optionally set a fixed word using `WORD`. When `WORD` = None, the game selects a random word from `Words.txt`.
 
+You can choose between English and German by changing the `LANGUAGE` constant.
 ### Licence
 
 This project is distributed under the MIT Licence. See [LICENSE](LICENSE) for details.
@@ -100,12 +101,14 @@ Die Datei wird als UTF-8 gelesen. Achte darauf, dass sie neben `Hangman.py` lieg
 
 ### Einstellungen
 
-In `Hangman.py` kannst du die Anzahl der Versuche über `VERSUCHE` ändern. Standardmäßig sind es sechs.
+In `Hangman.py` kannst man die Anzahl der Versuche über `VERSUCHE` ändern. Standardmäßig sind es sechs.
 
 Mit `WORD` lässt sich optional ein festes Wort vorgeben. Bei `WORD = None` wählt das Spiel ein zufälliges Wort aus der Wortdatei (`Words.txt`).
 
+Ändere `LANGUAGE` um die Sprache im Programm zu ändern.
+
 ### Lizenz
 
-Dieses Projekt steht unter der MIT License. Weitere Informationen findest du in der Datei [LICENSE](LICENSE).
+Dieses Projekt steht unter der MIT License. Weitere Informationen sind in der Datei [LICENSE](LICENSE).
 
 © 2026 Tarekthedev

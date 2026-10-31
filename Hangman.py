@@ -2,17 +2,22 @@
 # Copyright (c) Tarekthedev 2026
 # Licensed under the MIT License.
 
+import json
 from random import choice
 import tkinter as tk
 
 MAX_ATTEMPTS = 6
 WORD = None
 WORD_FILE = "Words.txt"
+LANGUAGE_FILE = "languages.json"
+LANGUAGE = "en"  # Change this to "de" for German or "en" for English
+
 
 
 class HangmanGame:
     def __init__(self):
         self.attempts = MAX_ATTEMPTS
+        self.texts = self.load_language()
 
         if WORD is not None:
             self.word = WORD
@@ -28,15 +33,20 @@ class HangmanGame:
         self.create_gui()
         self.window.mainloop()
 
+    def load_language(self):
+        with open(LANGUAGE_FILE, mode="r", encoding="UTF-8") as language_file:
+            languages = json.load(language_file)
+        return languages.get(LANGUAGE, languages["en"])
+
     def create_gui(self):
         self.window = tk.Tk()
-        self.window.title("Hangman")
+        self.window.title(self.texts["title"])
         self.window.geometry("600x500")
         self.window.configure(bg="black")
-        tk.Label(self.window, text="HANGMAN", font=("Arial", 30), fg="white", bg="black").pack()
+        tk.Label(self.window, text=self.texts["title"], font=("Arial", 30), fg="white", bg="black").pack()
         self.status_label = tk.Label(
             self.window,
-            text=f"Willkommen bei Hangman!\nDu hast {MAX_ATTEMPTS} Versuche, um das Wort zu erraten.\n",
+            text=self.texts["welcome"].format(attempts=MAX_ATTEMPTS),
             font=("Arial", 10),
             fg="white",
             bg="black",
@@ -80,38 +90,41 @@ class HangmanGame:
                 and self.guessed_letter != ""
                 and len(self.guessed_letter) == 1
             ):
-                self.status_label.config(text="Richtig!")
+                self.status_label.config(text=self.texts["correct"])
                 self.guessed_letters.append(self.guessed_letter)
                 self.guessed_letters_label.config(text=self.guessed_letters)
                 self.word_label.config(text=self.display_word())
             elif len(self.guessed_letter) > 1:
-                self.status_label.config(text="Gib nur einen Buchstaben ein!")
+                self.status_label.config(text=self.texts["single_letter"])
             elif self.guessed_letter in self.guessed_letters:
-                self.status_label.config(text="Diesen Buchstaben hast du bereits geraten!")
+                self.status_label.config(text=self.texts["already_guessed"])
             elif self.guessed_letter == "":
-                self.status_label.config(text="Gib einen Buchstaben ein!")
+                self.status_label.config(text=self.texts["empty"])
             elif not self.guessed_letter.isalpha():
-                self.status_label.config(text="Gib nur Buchstaben ein!")
+                self.status_label.config(text=self.texts["not_alpha"])
             else:
-                self.status_label.config(text="Falsch!")
+                self.status_label.config(text=self.texts["wrong"])
                 self.attempts -= 1
                 if self.attempts <= 0:
-                    self.status_label.config(text=f"Du hast verloren!\nDas Wort war {self.word}!")
-                    self.guessed_letters_label.config(text="Noch eine Runde?")
+                    self.status_label.config(text=self.texts["lose"].format(word=self.word))
+                    self.guessed_letters_label.config(text=self.texts["play_again"])
                     self.play_again_button = tk.Button(
-                        self.window, text="Ja", command=self.start_new_round
+                        self.window, text=self.texts["yes"], command=self.start_new_round
                     )
                     self.play_again_button.pack()
-                    self.quit_button = tk.Button(self.window, text="Nein", command=self.window.destroy)
+                    self.quit_button = tk.Button(self.window, text=self.texts["no"], command=self.window.destroy)
                     self.quit_button.pack()
                 else:
-                    self.attempts_label.config(text=f"Du hast noch {self.attempts} Versuche.")
+                    self.attempts_label.config(
+                        text=self.texts["attempts_left"].format(attempts=self.attempts)
+                    )
                     self.guessed_letters.append(self.guessed_letter)
                     self.guessed_letters_label.config(text=self.guessed_letters)
                     self.display_word()
             self.letter_entry.delete(0, tk.END)
 
     def display_word(self):
+
         self.displayed_word = ""
         for letter in self.word:
             if letter.lower() in self.guessed_letters:
@@ -120,11 +133,11 @@ class HangmanGame:
                 self.displayed_word += "_ "
         if "_" not in self.displayed_word and self.attempts != 0:
             self.has_won = True
-            self.status_label.config(text="Du hast gewonnen!")
-            self.guessed_letters_label.config(text="Noch eine Runde?")
-            self.play_again_button = tk.Button(self.window, text="Ja", command=self.start_new_round)
+            self.status_label.config(text=self.texts["win"])
+            self.guessed_letters_label.config(text=self.texts["play_again"])
+            self.play_again_button = tk.Button(self.window, text=self.texts["yes"], command=self.start_new_round)
             self.play_again_button.pack()
-            self.quit_button = tk.Button(self.window, text="Nein", command=self.window.destroy)
+            self.quit_button = tk.Button(self.window, text=self.texts["no"], command=self.window.destroy)
             self.quit_button.pack()
 
         return self.displayed_word

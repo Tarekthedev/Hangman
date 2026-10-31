@@ -1,0 +1,34 @@
+{
+    "de": {
+        "title": "HANGMAN",
+        "welcome": "Willkommen bei Hangman!\nDu hast {attempts} Versuche, um das Wort zu erraten.\n",
+        "correct": "Richtig!",
+        "single_letter": "Gib nur einen Buchstaben ein!",
+        "already_guessed": "Diesen Buchstaben hast du bereits geraten!",
+        "empty": "Gib einen Buchstaben ein!",
+        "not_alpha": "Gib nur Buchstaben ein!",
+        "wrong": "Falsch!",
+        "attempts_left": "Du hast noch {attempts} Versuche.",
+        "lose": "Du hast verloren!\nDas Wort war {word}!",
+        "play_again": "Noch eine Runde?",
+        "yes": "Ja",
+        "no": "Nein",
+        "win": "Du hast gewonnen!"
+    },
+    "en": {
+        "title": "HANGMAN",
+        "welcome": "Welcome to Hangman!\nYou have {attempts} attempts to guess the word.\n",
+        "correct": "Correct!",
+        "single_letter": "Please enter only one letter!",
+        "already_guessed": "You have already guessed that letter!",
+        "empty": "Please enter a letter!",
+        "not_alpha": "Please enter only letters!",
+        "wrong": "Wrong!",
+        "attempts_left": "You have {attempts} attempts left.",
+        "lose": "You lost!\nThe word was {word}!",
+        "play_again": "Another round?",
+        "yes": "Yes",
+        "no": "No",
+        "win": "You won!"
+    }
+}
