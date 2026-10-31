@@ -1,19 +1,78 @@
 # Hangman
 
-Ein Hangman-Spiel mit grafischer Oberfläche, geschrieben in Python und Tkinter. Errate das zufällig ausgewählte Wort Buchstabe für Buchstabe, bevor dir die Versuche ausgehen.
+<a href="#english">English</a> | <a href="#deutsch">Deutsch</a>
 
+![Python](https://img.shields.io/badge/Python-3-blue)
+![License](https://img.shields.io/badge/License-MIT-green)
+![GUI](https://img.shields.io/badge/GUI-Tkinter-orange)
 ![Hangman](Screenshot1.png)
 
-## Voraussetzungen
+## English
 
-- Python 3 
+A Hangman game with a graphical interface, written in Python and Tkinter. Guess the randomly selected word one letter at a time before you run out of attempts.
+
+### Requirements
+
+- Python 3
+- Tkinter
+
+On Linux, Tkinter may need to be installed separately, depending on your distribution. If you see an error related to `tkinter` when starting the game, install your distribution's Tkinter package.
+
+### Run the game
+
+Make sure `Hangman.py` and `Words.txt` are in the same folder. Open a terminal in that folder and run:
+
+```bash
+python Hangman.py
+```
+
+On some systems, use `python3 Hangman.py` instead.
+
+### How to play
+
+1. The game displays the hidden word as underscores.
+2. Enter a letter in the input field and press Enter.
+3. Correct letters are revealed in the word. Each incorrect guess costs one attempt.
+4. Previously guessed letters, empty input, and entries containing more than one character do not count as incorrect guesses.
+5. Once you guess the word or run out of attempts, you can start a new round or close the window.
+
+### Customise the word list
+
+The words are stored in `Words.txt`. You can add your own words, separated by commas. For example:
+
+```text
+Apple,Tree,Python,Computer
+```
+
+The file is read as UTF-8. Keep it in the same folder as `Hangman.py` and make sure it contains at least one word.
+
+### Settings
+
+In `Hangman.py`, change `MAX_ATTEPMTS` to set the number of attempts. The default is six.
+
+You can optionally set a fixed word with `WORD`. When `WORD = None`, the game selects a random word from `Words.txt`.
+
+### Licence
+
+This project is distributed under the MIT Licence. See [LICENSE](LICENSE) for details.
+
+© 2026 Tarekthedev
+
+
+## Deutsch
+
+Ein Hangman-Spiel mit grafischer Oberfläche, geschrieben in Python und Tkinter. Errate das zufällig ausgewählte Wort Buchstabe für Buchstabe, bevor dir die Versuche ausgehen.
+
+### Voraussetzungen
+
+- Python 3
 - Tkinter
 
 Unter Linux kann Tkinter je nach Distribution separat installiert werden. Falls beim Start ein Fehler zu `tkinter` erscheint, installiere das Tkinter-Paket deiner Distribution.
 
-## Starten
+### Starten
 
-Speichere `Hangman.py` und `Woerter.txt` im selben Ordner. Öffne ein Terminal in diesem Ordner und starte das Spiel mit oder öffne Hangman.py:
+Speichere `Hangman.py` und `Woerter.txt` im selben Ordner. Öffne ein Terminal in diesem Ordner und starte das Spiel mit:
 
 ```bash
 python Hangman.py
@@ -21,7 +80,7 @@ python Hangman.py
 
 Auf manchen Systemen lautet der Befehl stattdessen `python3 Hangman.py`.
 
-## Spielen
+### Spielen
 
 1. Das Spiel zeigt das gesuchte Wort zunächst als Unterstriche an.
 2. Gib einen Buchstaben in das Eingabefeld ein und drücke Enter.
@@ -29,9 +88,9 @@ Auf manchen Systemen lautet der Befehl stattdessen `python3 Hangman.py`.
 4. Bereits geratene Buchstaben, leere Eingaben und Eingaben mit mehr als einem Zeichen werden nicht als Fehlversuch gezählt.
 5. Errätst du das Wort oder sind alle Versuche aufgebraucht, kannst du eine neue Runde starten oder das Fenster schließen.
 
-## Wörter anpassen
+### Wörter anpassen
 
-Die Wörter stehen in `Woerter.txt`. Du kannst auch deine eigenen hinzufügen. Trenne sie dann durch Kommas (","). Beispiel:
+Die Wörter stehen in `Words.txt`. Du kannst auch deine eigenen hinzufügen. Trenne sie dann durch Kommas (","). Beispiel:
 
 ```text
 Apfel,Baum,Python,Computer
@@ -39,16 +98,14 @@ Apfel,Baum,Python,Computer
 
 Die Datei wird als UTF-8 gelesen. Achte darauf, dass sie neben `Hangman.py` liegt und mindestens ein Wort enthält.
 
-## Einstellungen
+### Einstellungen
 
 In `Hangman.py` kannst du die Anzahl der Versuche über `VERSUCHE` ändern. Standardmäßig sind es sechs.
 
-Mit `WORT` lässt sich optional ein festes Wort vorgeben. Bei `WORT = None` wählt das Spiel ein zufälliges Wort aus der Wortdatei (Woerter.txt).
+Mit `WORD` lässt sich optional ein festes Wort vorgeben. Bei `WORD = None` wählt das Spiel ein zufälliges Wort aus der Wortdatei (`Words.txt`).
 
+### Lizenz
 
-## Lizenz
-
-Dieses Projekt steht unter der MIT License.
-Weitere Informationen findest du in der Datei [LICENSE](LICENSE).
+Dieses Projekt steht unter der MIT License. Weitere Informationen findest du in der Datei [LICENSE](LICENSE).
 
 © 2026 Tarekthedev
