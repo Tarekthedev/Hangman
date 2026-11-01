@@ -48,11 +48,14 @@ The file is read as UTF-8. Keep it in the same folder as `Hangman.py` and make s
 
 ### Settings
 
-In `Hangman.py`, change `MAX_ATTEMPTS` to set the number of attempts. The default is six.
+| Setting | What it does | Values |
+| --- | --- | --- |
+| `MAX_ATTEMPTS` | Sets the number of attempts per round. | Any positive number; default: `6` |
+| `WORD` | Uses a fixed word instead of choosing one at random. | `None` for a random word, or a word in quotation marks; default: `None` |
+| `WORD_FILE` | Selects the file containing the words. | A file name; default: `"Words.txt"` |
+| `LANGUAGE` | Selects the language used by the interface. | `"en"` for English, `"de"` for German, or `"es"` for Spanish; default: `"en"` |
+| `LANGUAGE_FILE` | Selects the file containing the interface text. | A file name; default: `"languages.json"` |
 
-You can optionally set a fixed word using `WORD`. When `WORD` = None, the game selects a random word from `Words.txt`.
-
-You can choose between English and German by changing the `LANGUAGE` constant.
 ### Licence
 
 This project is distributed under the MIT Licence. See [LICENSE](LICENSE) for details.
@@ -101,11 +104,13 @@ Die Datei wird als UTF-8 gelesen. Achte darauf, dass sie neben `Hangman.py` lieg
 
 ### Einstellungen
 
-In `Hangman.py` kannst man die Anzahl der Versuche über `VERSUCHE` ändern. Standardmäßig sind es sechs.
-
-Mit `WORD` lässt sich optional ein festes Wort vorgeben. Bei `WORD = None` wählt das Spiel ein zufälliges Wort aus der Wortdatei (`Words.txt`).
-
-Ändere `LANGUAGE` um die Sprache im Programm zu ändern.
+| Funktion | Was sie macht | Werte |
+| --- | --- | --- |
+| `MAX_ATTEMPTS` | Legt die Anzahl der Versuche pro Runde fest. | Jede positive Zahl; Standard: `6` |
+| `WORD` | Verwendet ein festes Wort, statt zufällig eines auszuwählen. | `None` für ein zufälliges Wort oder ein Wort in Anführungszeichen; Standard: `None` |
+| `WORD_FILE` | Legt die Datei mit den Wörtern fest. | Ein Dateiname; Standard: `"Words.txt"` |
+| `LANGUAGE` | Legt die Sprache der Benutzeroberfläche fest. | `"en"` für Englisch, `"de"` für Deutsch oder `"es"` für Spanisch; Standard: `"en"` |
+| `LANGUAGE_FILE` | Legt die Datei mit den Texten der Benutzeroberfläche fest. | Ein Dateiname; Standard: `"languages.json"` |
 
 ### Lizenz
 

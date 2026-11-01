@@ -2,6 +2,7 @@
     "de": {
         "title": "HANGMAN",
         "welcome": "Willkommen bei Hangman!\nDu hast {attempts} Versuche, um das Wort zu erraten.\n",
+        "change_language": "Sprache ändern",
         "correct": "Richtig!",
         "single_letter": "Gib nur einen Buchstaben ein!",
         "already_guessed": "Diesen Buchstaben hast du bereits geraten!",
@@ -18,6 +19,7 @@
     "en": {
         "title": "HANGMAN",
         "welcome": "Welcome to Hangman!\nYou have {attempts} attempts to guess the word.\n",
+        "change_language": "Change Language",
         "correct": "Correct!",
         "single_letter": "Please enter only one letter!",
         "already_guessed": "You have already guessed that letter!",
@@ -30,5 +32,22 @@
         "yes": "Yes",
         "no": "No",
         "win": "You won!"
+    },
+    "es": {
+        "title": "HANGMAN",
+        "welcome": "¡Bienvenido a Hangman!\nTienes {attempts} intentos para adivinar la palabra.\n",
+        "change_language": "Cambiar idioma",
+        "correct": "¡Correcto!",
+        "single_letter": "¡Introduce solo una letra!",
+        "already_guessed": "Ya has probado esa letra.",
+        "empty": "Introduce una letra.",
+        "not_alpha": "Introduce solo letras.",
+        "wrong": "¡Incorrecto!",
+        "attempts_left": "Te quedan {attempts} intentos.",
+        "lose": "¡Has perdido!\nLa palabra era {word}.",
+        "play_again": "¿Otra ronda?",
+        "yes": "Sí",
+        "no": "No",
+        "win": "¡Has ganado!"
     }
 }

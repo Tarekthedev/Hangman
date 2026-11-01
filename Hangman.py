@@ -10,7 +10,7 @@ MAX_ATTEMPTS = 6
 WORD = None
 WORD_FILE = "Words.txt"
 LANGUAGE_FILE = "languages.json"
-LANGUAGE = "en"  # Change this to "de" for German or "en" for English
+LANGUAGE = "en"  # Use "en" for English, "de" for German, or "es" for Spanish
 
 
 
@@ -60,11 +60,26 @@ class HangmanGame:
             self.window, text=self.guessed_letters, font=("Arial", 10), fg="white", bg="black"
         )
         self.guessed_letters_label.pack()
+        self.change_language_button = tk.Button(
+            self.window, text=self.texts["change_language"], command=self.change_language,bg="black", fg="white"
+        )
+        self.change_language_button.place(x=10, y=10)
         self.letter_entry = tk.Entry(self.window, width=10, font=("Arial", 18), bg="gray", fg="black")
         self.letter_entry.pack()
         self.letter_entry.bind("<Return>", self.play)
         self.attempts_label = tk.Label(self.window, width=20, font=("Arial", 10), bg="black", fg="white")
         self.attempts_label.pack()
+        
+    def change_language(self):
+        global LANGUAGE
+        LANGUAGE = {"en": "de", "de": "es", "es": "en"}.get(LANGUAGE, "en")
+        self.texts = self.load_language()
+        self.window.title(self.texts["title"])
+        self.status_label.config(text=self.texts["welcome"].format(attempts=MAX_ATTEMPTS))
+        self.word_label.config(text=self.display_word())
+        self.guessed_letters_label.config(text=self.guessed_letters)
+        self.change_language_button.config(text=self.texts["change_language"])
+        self.attempts_label.config(text="")
 
     def start_new_round(self):
         if WORD is not None:
