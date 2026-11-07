@@ -1,0 +1,3 @@
+Computer,Python,Programm,Smartphone
+Apfel,Banane,Erdbeere,Wassermelone
+Katze,Hund,Maus,Tiger,Biene,Fisch
