@@ -11,16 +11,21 @@
 
 A Hangman game with a graphical interface, written in Python and Tkinter. Guess the randomly selected word one letter at a time before you run out of attempts.
 
-### Requirements
+### Download (.zip with executable for Windows)
+<a href="https://github.com/Tarekthedev/Hangman/releases/download/v1.0.0/Hangman_exe.zip">
+<img src="https://img.shields.io/badge/Download-Hangman-blue?style=for-the-badge" />
+</a>
 
-- Python 3
-- Tkinter
+**Installation:**
 
-On Linux, Tkinter may need to be installed separately, depending on your distribution. If you see an error related to `tkinter` when starting the game, install your distribution's Tkinter package.
+1. Click the download button.
+2. Save `Hangman_exe.zip` and extract its contents.
+3. Customize `assets/settings.json` and `assets/words.txt` if desired.
+4. Run `Hangman.exe` and have fun!
 
-### Run the game
+### Run the game using Python
 
-Make sure `Hangman.py` and `Words.txt` are in the same folder. Open a terminal in that folder and run:
+Open a terminal in the project directory and run:
 
 ```bash
 python Hangman.py
@@ -36,23 +41,22 @@ On some systems, use `python3 Hangman.py` instead.
 4. Previously guessed letters, empty input, and entries containing more than one character do not count as incorrect guesses.
 5. Once you guess the word or run out of attempts, you can start a new round or close the window.
 
-### Customise the word list
+### Customize the word list
 
-The words are stored in `Words.txt`. You can add your own words, separated by commas. For example:
+The words are stored in `assets/words.txt`. You can add your own words, separated by commas. For example:
 
 ```text
 Apple,Tree,Python,Computer
 ```
 
-The file is read as UTF-8. Keep it in the same folder as `Hangman.py` and make sure it contains at least one word.
+The file is read as UTF-8. Keep it in assets and make sure it contains at least one word.
 
-### Settings
-
+### Settings (assets/settings.json)
 | Setting | What it does | Values |
 | --- | --- | --- |
 | `MAX_ATTEMPTS` | Sets the number of attempts per round. | Any positive number; default: `6` |
-| `WORD` | Uses a fixed word instead of choosing one at random. | `None` for a random word, or a word in quotation marks; default: `None` |
-| `WORD_FILE` | Selects the file containing the words. | A file name; default: `"Words.txt"` |
+| `WORD` | Uses a fixed word instead of choosing one at random. | `null` for a random word, or a word in quotation marks; default: `null` |
+| `WORD_FILE` | Selects the file containing the words. | A file name; default: `"words.txt"` |
 | `LANGUAGE` | Selects the language used by the interface. | `"en"` for English, `"de"` for German, or `"es"` for Spanish; default: `"en"` |
 | `LANGUAGE_FILE` | Selects the file containing the interface text. | A file name; default: `"languages.json"` |
 
@@ -67,22 +71,29 @@ This project is distributed under the MIT Licence. See [LICENSE](LICENSE) for de
 
 Ein Hangman-Spiel mit grafischer Oberfläche, geschrieben in Python und Tkinter. Errate das zufällig ausgewählte Wort Buchstabe für Buchstabe, bevor dir die Versuche ausgehen.
 
-### Voraussetzungen
+### Download (.zip mit .exe für Windows)
+<a href="https://github.com/Tarekthedev/Hangman/releases/download/v1.0.0/Hangman_exe.zip">
+<img src="https://img.shields.io/badge/Download-Hangman-blue?style=for-the-badge" />
+</a>
 
-- Python 3
-- Tkinter
-
-Unter Linux kann Tkinter je nach Distribution separat installiert werden. Falls beim Start ein Fehler zu `tkinter` erscheint, installiere das Tkinter-Paket deiner Distribution.
+**Installation:**
+1. Klicke auf den Download-Button.
+2. Speichere `Hangman_exe.zip` und entpacke die Datei.
+3. Passe `assets/settings.json` und `assets/words.txt` bei Bedarf an.
+4. Starte `Hangman.exe` und viel Spaß beim Spielen!
 
 ### Starten
 
-Speichere `Hangman.py` und `Woerter.txt` im selben Ordner. Öffne ein Terminal in diesem Ordner und starte das Spiel mit:
+Öffne ein Terminal in diesem Ordner und starte das Spiel mit:
 
 ```bash
 python Hangman.py
 ```
 
-Auf manchen Systemen lautet der Befehl stattdessen `python3 Hangman.py`.
+Auf manchen Systemen lautet der Befehl stattdessen 
+```bash
+python3 Hangman.py
+```
 
 ### Spielen
 
@@ -94,21 +105,20 @@ Auf manchen Systemen lautet der Befehl stattdessen `python3 Hangman.py`.
 
 ### Wörter anpassen
 
-Die Wörter stehen in `Words.txt`. Du kannst auch deine eigenen hinzufügen. Trenne sie dann durch Kommas (","). Beispiel:
+Die Wörter stehen in `assets/words.txt`. Du kannst auch deine eigenen hinzufügen. Trenne die Wörter durch Kommas (","). Beispiel:
 
 ```text
 Apfel,Baum,Python,Computer
 ```
 
-Die Datei wird als UTF-8 gelesen. Achte darauf, dass sie neben `Hangman.py` liegt und mindestens ein Wort enthält.
+Die Datei wird als UTF-8 gelesen. Achte darauf, dass sie mindestens ein Wort enthält.
 
-### Einstellungen
-
+### Einstellungen (`assets/settings.json`)
 | Funktion | Was sie macht | Werte |
 | --- | --- | --- |
 | `MAX_ATTEMPTS` | Legt die Anzahl der Versuche pro Runde fest. | Jede positive Zahl; Standard: `6` |
-| `WORD` | Verwendet ein festes Wort, statt zufällig eines auszuwählen. | `None` für ein zufälliges Wort oder ein Wort in Anführungszeichen; Standard: `None` |
-| `WORD_FILE` | Legt die Datei mit den Wörtern fest. | Ein Dateiname; Standard: `"Words.txt"` |
+| `WORD` | Verwendet ein festes Wort, statt zufällig eines auszuwählen. | `null` für ein zufälliges Wort oder ein Wort in Anführungszeichen; Standard: `null` |
+| `WORD_FILE` | Legt die Datei mit den Wörtern fest. | Ein Dateiname; Standard: `"words.txt"` |
 | `LANGUAGE` | Legt die Sprache der Benutzeroberfläche fest. | `"en"` für Englisch, `"de"` für Deutsch oder `"es"` für Spanisch; Standard: `"en"` |
 | `LANGUAGE_FILE` | Legt die Datei mit den Texten der Benutzeroberfläche fest. | Ein Dateiname; Standard: `"languages.json"` |
 

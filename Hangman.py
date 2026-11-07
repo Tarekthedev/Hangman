@@ -6,17 +6,12 @@ import json
 from random import choice
 import tkinter as tk
 
-MAX_ATTEMPTS = 6
-WORD = None
-WORD_FILE = "Words.txt"
-LANGUAGE_FILE = "languages.json"
-LANGUAGE = "en"  # Use "en" for English, "de" for German, or "es" for Spanish
-
+SETTINGS_FILE = "assets/settings.json"
 
 
 class HangmanGame:
     def __init__(self):
-        self.attempts = MAX_ATTEMPTS
+        self.load_settings()
         self.texts = self.load_language()
 
         if WORD is not None:
@@ -37,39 +32,87 @@ class HangmanGame:
         with open(LANGUAGE_FILE, mode="r", encoding="UTF-8") as language_file:
             languages = json.load(language_file)
         return languages.get(LANGUAGE, languages["en"])
+    
+    def load_settings(self):
+        with open(SETTINGS_FILE, mode="r", encoding="UTF-8") as settings_file:
+            settings = json.load(settings_file)
+        global LANGUAGE, MAX_ATTEMPTS, WORD, WORD_FILE, LANGUAGE_FILE,COLOR_MODE
+        LANGUAGE = settings.get("Language", "en")
+        MAX_ATTEMPTS = settings.get("MaxAttempts", 6)
+        WORD = settings.get("Word", None)
+        WORD_FILE = settings.get("WordListFile", "assets/Words.txt")
+        LANGUAGE_FILE = settings.get("LanguageFile", "assets/languages.json")
+        COLOR_MODE = settings.get("ColorMode","dark")
 
     def create_gui(self):
         self.window = tk.Tk()
         self.window.title(self.texts["title"])
-        self.window.geometry("600x500")
-        self.window.configure(bg="black")
-        tk.Label(self.window, text=self.texts["title"], font=("Arial", 30), fg="white", bg="black").pack()
+        self.window.geometry("600x400")
+        if COLOR_MODE == "dark": 
+            self.fgc="white"
+            self.bgc="black"
+        else:
+            self.fgc="black"
+            self.bgc="white"
+        self.window.configure(bg=self.bgc)
+        self.window.iconbitmap("assets/icon.ico")
+        self.window.resizable(False, False)
+        self.title=tk.Label(self.window, text=self.texts["title"], font=("Arial", 30), fg=self.fgc, bg=self.bgc)
+        self.title.pack()
         self.status_label = tk.Label(
             self.window,
             text=self.texts["welcome"].format(attempts=MAX_ATTEMPTS),
             font=("Arial", 10),
-            fg="white",
-            bg="black",
+            fg=self.fgc,
+            bg=self.bgc,
         )
         self.status_label.pack()
         self.word_label = tk.Label(
-            self.window, text=self.display_word(), font=("Arial", 10), fg="white", bg="black"
+            self.window, text=self.display_word(), font=("Arial", 10), fg=self.fgc, bg=self.bgc
         )
         self.word_label.pack()
         self.guessed_letters_label = tk.Label(
-            self.window, text=self.guessed_letters, font=("Arial", 10), fg="white", bg="black"
+            self.window, text=self.guessed_letters, font=("Arial", 10), fg=self.fgc, bg=self.bgc
         )
         self.guessed_letters_label.pack()
         self.change_language_button = tk.Button(
-            self.window, text=self.texts["change_language"], command=self.change_language,bg="black", fg="white"
+            self.window, text=self.texts["change_language"], command=self.change_language,bg=self.bgc, fg=self.fgc
         )
         self.change_language_button.place(x=10, y=10)
-        self.letter_entry = tk.Entry(self.window, width=10, font=("Arial", 18), bg="gray", fg="black")
+        self.change_color_mode_button=tk.Button(
+            self.window,text="🌙",command=self.change_color_mode,bg=self.bgc, fg=self.fgc, font=("Segoe UI Emoji",10)
+        )
+        self.play_again_button = tk.Button(
+        self.window, text=self.texts["yes"], command=self.start_new_round
+                    )
+        self.quit_button = tk.Button(self.window, text=self.texts["no"], command=self.window.destroy)
+        self.change_color_mode_button.place(x=10, y=40)
+        self.restart_game_button=tk.Button(self.window,text="🔄️",command=self.start_new_round,fg=self.fgc, bg=self.bgc, font=("Segoe UI Emoji",10))
+        self.restart_game_button.place(x=50,y=40)
+        self.letter_entry = tk.Entry(self.window, width=10, font=("Arial", 18), bg="gray", fg="black",)
         self.letter_entry.pack()
         self.letter_entry.bind("<Return>", self.play)
-        self.attempts_label = tk.Label(self.window, width=20, font=("Arial", 10), bg="black", fg="white")
+        self.attempts_label = tk.Label(self.window, width=20, font=("Arial", 10), bg=self.bgc, fg=self.fgc)
         self.attempts_label.pack()
-        
+
+    def change_color_mode(self):
+        if self.fgc == "white": self.fgc = "black";self.change_color_mode_button.config(text=" ☀️") 
+        else: self.fgc = "white";self.change_color_mode_button.config(text=" 🌙")
+        if self.bgc == "white": self.bgc = "black"; 
+        else: self.bgc = "white"
+
+        self.window.configure(bg=self.bgc)
+        self.status_label.config(bg=self.bgc, fg=self.fgc)
+        self.word_label.config(bg=self.bgc, fg=self.fgc)
+        self.guessed_letters_label.config(bg=self.bgc, fg=self.fgc)
+        self.change_language_button.config(bg=self.bgc, fg=self.fgc)
+        self.letter_entry.config(bg="gray", fg="black")
+        self.attempts_label.config(bg=self.bgc, fg=self.fgc)
+        self.change_color_mode_button.config(bg=self.bgc, fg=self.fgc)
+        self.title.config(bg=self.bgc, fg=self.fgc)
+        self.restart_game_button.config(bg=self.bgc, fg=self.fgc)
+        self.window.update_idletasks() #?
+
     def change_language(self):
         global LANGUAGE
         LANGUAGE = {"en": "de", "de": "es", "es": "en"}.get(LANGUAGE, "en")
@@ -92,6 +135,7 @@ class HangmanGame:
         self.word_label.config(text=self.display_word())
         self.guessed_letters_label.config(text=self.guessed_letters)
         self.attempts_label.config(text="")
+        self.status_label.config(text=self.texts["welcome"].format(attempts=MAX_ATTEMPTS))
         self.play_again_button.destroy()
         self.quit_button.destroy()
 
@@ -123,11 +167,7 @@ class HangmanGame:
                 if self.attempts <= 0:
                     self.status_label.config(text=self.texts["lose"].format(word=self.word))
                     self.guessed_letters_label.config(text=self.texts["play_again"])
-                    self.play_again_button = tk.Button(
-                        self.window, text=self.texts["yes"], command=self.start_new_round
-                    )
                     self.play_again_button.pack()
-                    self.quit_button = tk.Button(self.window, text=self.texts["no"], command=self.window.destroy)
                     self.quit_button.pack()
                 else:
                     self.attempts_label.config(
@@ -139,7 +179,6 @@ class HangmanGame:
             self.letter_entry.delete(0, tk.END)
 
     def display_word(self):
-
         self.displayed_word = ""
         for letter in self.word:
             if letter.lower() in self.guessed_letters:

@@ -1,0 +1,8 @@
+{
+    "Language": "en",
+    "MaxAttempts": 6,
+    "Word": null,
+    "WordListFile": "assets/words.txt",
+    "LanguageFile": "assets/languages.json",
+    "ColorMode": "dark"
+}
