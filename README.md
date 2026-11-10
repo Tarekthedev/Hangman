@@ -12,7 +12,7 @@
 A Hangman game with a graphical interface, written in Python and Tkinter. Guess the randomly selected word one letter at a time before you run out of attempts.
 
 ### Download (.zip with executable for Windows)
-<a href="https://github.com/Tarekthedev/Hangman/releases/download/v1.0.0/Hangman_exe.zip">
+<a href="https://github.com/Tarekthedev/Hangman/releases/download/1.0.0/Hangman_v1.0.0.zip">
 <img src="https://img.shields.io/badge/Download-Hangman-blue?style=for-the-badge" />
 </a>
 
@@ -72,7 +72,7 @@ This project is distributed under the MIT Licence. See [LICENSE](LICENSE) for de
 Ein Hangman-Spiel mit grafischer Oberfläche, geschrieben in Python und Tkinter. Errate das zufällig ausgewählte Wort Buchstabe für Buchstabe, bevor dir die Versuche ausgehen.
 
 ### Download (.zip mit .exe für Windows)
-<a href="https://github.com/Tarekthedev/Hangman/releases/download/v1.0.0/Hangman_exe.zip">
+<a href="https://github.com/Tarekthedev/Hangman/releases/download/1.0.0/Hangman_v1.0.0.zip">
 <img src="https://img.shields.io/badge/Download-Hangman-blue?style=for-the-badge" />
 </a>
 
