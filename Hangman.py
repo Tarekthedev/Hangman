@@ -5,6 +5,7 @@
 import json
 from random import choice
 import tkinter as tk
+from tkinter import messagebox
 
 SETTINGS_FILE = "assets/settings.json"
 
@@ -17,11 +18,13 @@ class HangmanGame:
         if WORD is not None:
             self.word = WORD
         else:
-            with open(WORD_FILE, mode="r", encoding="UTF-8") as word_file:
-                self.words = word_file.read().split(",")
-            self.words = [word.strip() for word in self.words]
-            self.word = choice(self.words)
-
+            try:
+                with open(WORD_FILE, mode="r", encoding="UTF-8") as word_file:
+                    self.words = word_file.read().split(",")
+                self.words = [word.strip() for word in self.words]
+                self.word = choice(self.words)
+            except:
+                messagebox.showerror("File not found", "word.json was not found. Make sure it is located in the assets/ folder.")
         self.guessed_letters = []
         self.has_won = False
         self.attempts = MAX_ATTEMPTS
@@ -29,20 +32,27 @@ class HangmanGame:
         self.window.mainloop()
 
     def load_language(self):
-        with open(LANGUAGE_FILE, mode="r", encoding="UTF-8") as language_file:
-            languages = json.load(language_file)
-        return languages.get(LANGUAGE, languages["en"])
-    
+        try:
+            with open(LANGUAGE_FILE, mode="r", encoding="UTF-8") as language_file:
+                languages = json.load(language_file)
+            return languages.get(LANGUAGE, languages["en"])
+        except FileNotFoundError:
+            messagebox.showerror("File not found", "assets/languages.json was not found. Make sure it is located in the assets/ folder.")
+
     def load_settings(self):
-        with open(SETTINGS_FILE, mode="r", encoding="UTF-8") as settings_file:
-            settings = json.load(settings_file)
-        global LANGUAGE, MAX_ATTEMPTS, WORD, WORD_FILE, LANGUAGE_FILE,COLOR_MODE
-        LANGUAGE = settings.get("Language", "en")
-        MAX_ATTEMPTS = settings.get("MaxAttempts", 6)
-        WORD = settings.get("Word", None)
-        WORD_FILE = settings.get("WordListFile", "assets/Words.txt")
-        LANGUAGE_FILE = settings.get("LanguageFile", "assets/languages.json")
-        COLOR_MODE = settings.get("ColorMode","dark")
+        try:
+            with open(SETTINGS_FILE, mode="r", encoding="UTF-8") as settings_file:
+                settings = json.load(settings_file)
+            global LANGUAGE, MAX_ATTEMPTS, WORD, WORD_FILE, LANGUAGE_FILE,COLOR_MODE
+            LANGUAGE = settings.get("Language", "en")
+            MAX_ATTEMPTS = settings.get("MaxAttempts", 6)
+            WORD = settings.get("Word", None)
+            WORD_FILE = settings.get("WordListFile", "assets/Words.txt")
+            LANGUAGE_FILE = settings.get("LanguageFile", "assets/languages.json")
+            COLOR_MODE = settings.get("ColorMode","dark")
+        except FileNotFoundError:
+            messagebox.showerror("File not found", "assets/settings.json was not found. Make sure it is located in the assets/ folder.")
+            
 
     def create_gui(self):
         self.window = tk.Tk()
@@ -55,7 +65,10 @@ class HangmanGame:
             self.fgc="black"
             self.bgc="white"
         self.window.configure(bg=self.bgc)
-        self.window.iconbitmap("assets/icon.ico")
+        try:
+            self.window.iconbitmap("assets/icon.ico")
+        except tk.TclError:
+            ...
         self.window.resizable(False, False)
         self.title=tk.Label(self.window, text=self.texts["title"], font=("Arial", 30), fg=self.fgc, bg=self.bgc)
         self.title.pack()
